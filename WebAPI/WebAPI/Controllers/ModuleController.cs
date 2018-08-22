@@ -26,8 +26,17 @@ namespace WebAPI
         [HttpGet]
         public async Task<IHttpActionResult> TimeServer()
         {
-            try { return await Task.Factory.StartNew(() => { return Ok(DateTime.Now); }); }
-            catch { return Ok(DateTime.Now); }
+            try
+            {
+                return await Task.Factory.StartNew(() =>
+                {
+                    return Ok(DateTime.Now);
+                });
+            }
+            catch
+            {
+                return Ok(DateTime.Now);
+            }
 
         }
 
@@ -54,7 +63,11 @@ namespace WebAPI
         //            string Query = System.IO.File.ReadAllText($@"{HttpRuntime.AppDomainAppPath}\wwwroot\InitData\DATA_xChiNhanh.sql");
         //            await Instance.Context.Database.ExecuteSqlCommandAsync(Query, new SqlParameter[] { });
         //        }
-        //        catch (Exception ex) { ModelState.AddModelError("Exception", ex); }
+        //        catch (Exception ex)
+        //        {
+        //            ModelState.AddModelError(nameof(Exception), ex);
+        //            Log.Error(MethodBase.GetCurrentMethod(), ex);
+        //        }
         //    }
         //}
         //async Task InitTienTe()
@@ -68,7 +81,11 @@ namespace WebAPI
         //            string Query = System.IO.File.ReadAllText($@"{HttpRuntime.AppDomainAppPath}\wwwroot\InitData\DATA_eTienTe.sql");
         //            await Instance.Context.Database.ExecuteSqlCommandAsync(Query, new SqlParameter[] { });
         //        }
-        //        catch (Exception ex) { ModelState.AddModelError("Exception", ex); }
+        //        catch (Exception ex)
+        //        {
+        //            ModelState.AddModelError(nameof(Exception), ex);
+        //            Log.Error(MethodBase.GetCurrentMethod(), ex);
+        //        }
         //    }
         //}
         //async Task InitTinhThanh()
@@ -82,7 +99,11 @@ namespace WebAPI
         //            string Query = System.IO.File.ReadAllText($@"{HttpRuntime.AppDomainAppPath}\wwwroot\InitData\DATA_eTinhThanh.sql");
         //            await Instance.Context.Database.ExecuteSqlCommandAsync(Query, new SqlParameter[] { });
         //        }
-        //        catch (Exception ex) { ModelState.AddModelError("Exception", ex); }
+        //        catch (Exception ex)
+        //        {
+        //            ModelState.AddModelError(nameof(Exception), ex);
+        //            Log.Error(MethodBase.GetCurrentMethod(), ex);
+        //        }
         //    }
         //}
         //async Task InitDonViTinh()
@@ -96,7 +117,11 @@ namespace WebAPI
         //            string Query = System.IO.File.ReadAllText($@"{HttpRuntime.AppDomainAppPath}\wwwroot\InitData\DATA_eDonViTinh.sql");
         //            await Instance.Context.Database.ExecuteSqlCommandAsync(Query, new SqlParameter[] { });
         //        }
-        //        catch (Exception ex) { ModelState.AddModelError("Exception", ex); }
+        //        catch (Exception ex)
+        //        {
+        //            ModelState.AddModelError(nameof(Exception), ex);
+        //            Log.Error(MethodBase.GetCurrentMethod(), ex);
+        //        }
         //    }
         //}
         //async Task InitLoai()
@@ -110,7 +135,11 @@ namespace WebAPI
         //            string Query = System.IO.File.ReadAllText($@"{HttpRuntime.AppDomainAppPath}\wwwroot\InitData\DATA_eLoai.sql");
         //            await Instance.Context.Database.ExecuteSqlCommandAsync(Query, new SqlParameter[] { });
         //        }
-        //        catch (Exception ex) { ModelState.AddModelError("Exception", ex); }
+        //        catch (Exception ex)
+        //        {
+        //            ModelState.AddModelError(nameof(Exception), ex);
+        //            Log.Error(MethodBase.GetCurrentMethod(), ex);
+        //        }
         //    }
         //}
 
@@ -190,7 +219,8 @@ namespace WebAPI
         //    catch (Exception ex)
         //    {
         //        Instance.RollbackTransaction();
-        //        ModelState.AddModelError("Exception", ex.Message);
+        //        ModelState.AddModelError(nameof(Exception), ex);
+        //        Log.Error(MethodBase.GetCurrentMethod(), ex);
         //        return BadRequest(ModelState);
         //    }
         //}
@@ -364,7 +394,8 @@ namespace WebAPI
         //    catch (Exception ex)
         //    {
         //        Instance.RollbackTransaction();
-        //        ModelState.AddModelError("Exception", ex.Message);
+        //        ModelState.AddModelError(nameof(Exception), ex);
+        //        Log.Error(MethodBase.GetCurrentMethod(), ex);
         //        return BadRequest(ModelState);
         //    }
         //}
@@ -399,7 +430,8 @@ namespace WebAPI
         //    }
         //    catch (Exception ex)
         //    {
-        //        ModelState.AddModelError("Exception", ex.Message);
+        //        ModelState.AddModelError(nameof(Exception), ex);
+        //        Log.Error(MethodBase.GetCurrentMethod(), ex);
         //        return BadRequest(ModelState);
         //    }
         //}

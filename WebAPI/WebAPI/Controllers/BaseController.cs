@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Http;
 using WebAPI.BLL;
@@ -33,7 +35,7 @@ namespace WebAPI.Controllers
                 }
                 else
                 {
-                    String Code = Item.GetObjectByName<String>("Code");
+                    String Code = Item.GetObjectValueByName<String>("Code");
                     if (Code.StartsWith(bRe))
                     {
                         Int32 number = Int32.Parse(Code.Replace(bRe, String.Empty));
@@ -47,7 +49,8 @@ namespace WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Exception", ex);
+                ModelState.AddModelError(nameof(Exception), ex);
+                Log.Error(MethodBase.GetCurrentMethod(), ex);
                 return BadRequest(ModelState);
             }
         }
@@ -64,7 +67,8 @@ namespace WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Exception", ex);
+                ModelState.AddModelError(nameof(Exception), ex);
+                Log.Error(MethodBase.GetCurrentMethod(), ex);
                 return BadRequest(ModelState);
             }
         }
@@ -94,7 +98,8 @@ namespace WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Exception", ex);
+                ModelState.AddModelError(nameof(Exception), ex);
+                Log.Error(MethodBase.GetCurrentMethod(), ex);
                 return BadRequest(ModelState);
             }
         }
@@ -116,7 +121,8 @@ namespace WebAPI.Controllers
             catch (Exception ex)
             {
                 Instance.RollbackTransaction();
-                ModelState.AddModelError("Exception", ex);
+                ModelState.AddModelError(nameof(Exception), ex);
+                Log.Error(MethodBase.GetCurrentMethod(), ex);
                 return BadRequest(ModelState);
             }
         }
@@ -138,7 +144,8 @@ namespace WebAPI.Controllers
             catch (Exception ex)
             {
                 Instance.RollbackTransaction();
-                ModelState.AddModelError("Exception", ex);
+                ModelState.AddModelError(nameof(Exception), ex);
+                Log.Error(MethodBase.GetCurrentMethod(), ex);
                 return BadRequest(ModelState);
             }
         }
@@ -160,7 +167,8 @@ namespace WebAPI.Controllers
             catch (Exception ex)
             {
                 Instance.RollbackTransaction();
-                ModelState.AddModelError("Exception", ex);
+                ModelState.AddModelError(nameof(Exception), ex);
+                Log.Error(MethodBase.GetCurrentMethod(), ex);
                 return BadRequest(ModelState);
             }
         }
@@ -182,7 +190,8 @@ namespace WebAPI.Controllers
             catch (Exception ex)
             {
                 Instance.RollbackTransaction();
-                ModelState.AddModelError("Exception", ex);
+                ModelState.AddModelError(nameof(Exception), ex);
+                Log.Error(MethodBase.GetCurrentMethod(), ex);
                 return BadRequest(ModelState);
             }
         }
@@ -204,7 +213,8 @@ namespace WebAPI.Controllers
             catch (Exception ex)
             {
                 Instance.RollbackTransaction();
-                ModelState.AddModelError("Exception", ex);
+                ModelState.AddModelError(nameof(Exception), ex);
+                Log.Error(MethodBase.GetCurrentMethod(), ex);
                 return BadRequest(ModelState);
             }
         }
@@ -226,7 +236,8 @@ namespace WebAPI.Controllers
             catch (Exception ex)
             {
                 Instance.RollbackTransaction();
-                ModelState.AddModelError("Exception", ex);
+                ModelState.AddModelError(nameof(Exception), ex);
+                Log.Error(MethodBase.GetCurrentMethod(), ex);
                 return BadRequest(ModelState);
             }
         }

@@ -3,6 +3,7 @@ using WebAPI.Models.EF;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
+using Common;
 
 namespace WebAPI.Models.Model
 {
@@ -49,7 +50,7 @@ namespace WebAPI.Models.Model
         public  DbSet<eConfigurationCode> eConfigurationCodes { get; set; }
 
 
-        public zModel() : base(clsGeneral.connectionString ?? "ConnectionDbContext")
+        public zModel() : base(Define.Instance.ConnectionString ?? "ConnectionDbContext")
         {
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using Common;
+using System.Web.Http;
 using WebAPI.BLL;
 using WebAPI.Models.EF;
 using WebAPI.Models.OtherEF;
@@ -34,16 +35,16 @@ namespace WebAPI.Controllers
 
             if (IsValid)
             {
-                clsEnum.fLogin res = Instance.CheckLogin(login.Username, login.Password);
+                Define.fLogin res = Instance.CheckLogin(login.Username, login.Password);
                 switch (res)
                 {
-                    case clsEnum.fLogin.NotFound:
+                    case Define.fLogin.NotFound:
                         ModelState.AddModelError("", "Tài khoản không tồn tại.");
                         goto default;
-                    case clsEnum.fLogin.Disable:
+                    case Define.fLogin.Disable:
                         ModelState.AddModelError("", "Tài khoản đã bị khóa.");
                         goto default;
-                    case clsEnum.fLogin.Success:
+                    case Define.fLogin.Success:
                         return Ok();
                     default:
                         return BadRequest(ModelState);

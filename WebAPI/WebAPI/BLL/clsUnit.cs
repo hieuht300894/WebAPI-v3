@@ -9,7 +9,7 @@ namespace WebAPI.BLL
 {
     public static class clsUnit
     {
-        public static IEnumerable<eUnit> GetAllWithTitle(this Repository<eUnit> repository, string msg = "[-----Tất cả-----]")
+        public static IEnumerable<eUnit> GetAllWithTitle(this Repository<eUnit> repository, string msg)
         {
             List<eUnit> lstItems = repository.GetItems();
             lstItems.Insert(0, new eUnit() { KeyID = 0, Name = msg });
